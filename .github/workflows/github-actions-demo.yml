@@ -2,7 +2,7 @@ name: Pull Request Update Branch
 on:
   push:
     branches:
-      - br1
+      - main
 
 jobs:
   autoupdate:
@@ -21,3 +21,4 @@ jobs:
           RETRY_COUNT: "3"
           RETRY_SLEEP: "5000" # 5秒
           MERGE_CONFLICT_ACTION: "fail"
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
