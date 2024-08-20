@@ -2,7 +2,7 @@ name: Pull Request Update Branch
 on:
   push:
     branches:
-      - br1
+      - main
 
 jobs:
   autoupdate:
