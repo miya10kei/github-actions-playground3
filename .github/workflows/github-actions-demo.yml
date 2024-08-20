@@ -1,0 +1,23 @@
+name: Pull Request Update Branch
+on:
+  push:
+    branches:
+      - br1
+
+jobs:
+  autoupdate:
+    name: autoupdate
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+      actions: write
+    timeout-minutes: 5
+    steps:
+      - uses: docker://chinthakagodawita/autoupdate-action@sha256:53d7013ad4689b703d2715d4b17d4901bb0a385e495e0b481f37adbe9b3cc3fc # v1
+        env:
+          DRY_RUN: "false"
+          PR_FILTER: "labelled"
+          PR_LABELS: "autoupdate"
+          RETRY_COUNT: "3"
+          RETRY_SLEEP: "5000" # 5秒
+          MERGE_CONFLICT_ACTION: "fail"
